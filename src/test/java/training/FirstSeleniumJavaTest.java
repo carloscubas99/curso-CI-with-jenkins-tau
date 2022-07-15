@@ -30,7 +30,7 @@ public class FirstSeleniumJavaTest {
         System.out.println("Titulo de la pagina:  " + title1);
         System.out.println("title is "+title1);
         AssertJUnit.assertTrue(title1.equals("Google"));
-        System.out.println("Validacion exitosa");
+        System.out.println("Validacion exitosa...");
     }
 
     @BeforeTest
