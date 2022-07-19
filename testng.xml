@@ -4,13 +4,13 @@
 
     <test name="OpenCartTest">
         <classes>
-            <class name="training.suite1.OpenCartTests"/>
+            <class name="suite1.OpenCartTests"/>
         </classes>
     </test>
 
-    <test name="SauceDemoTest">
+    <test name="SaceDemoTest">
         <classes>
-            <class name="training.suite2.SauceDemoTests"/>
+            <class name="suite2.SauceDemoTests"/>
         </classes>
     </test>
 </suite>

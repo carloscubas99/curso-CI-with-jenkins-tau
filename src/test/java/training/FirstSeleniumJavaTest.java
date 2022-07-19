@@ -12,14 +12,15 @@ import org.testng.annotations.Test;
 public class FirstSeleniumJavaTest {
     private WebDriver driver;
 
-//    @Test
-//    public void testEasy(){
-//        driver.get("https://testautomationu.applitools.com/");
-//        driver.manage().window().maximize();
-//
-//        String title = driver.getTitle();
-//        AssertJUnit.assertTrue(title.equals("Test Automation University | Applitools"));
-//    }
+    @Test
+    public void testEasy(){
+        driver.get("https://www.linkedin.com/");
+        driver.manage().window().maximize();
+
+        String title = driver.getTitle();
+        System.out.println(title);
+        AssertJUnit.assertTrue(title.equals("Test Automation University | Applitools"));
+    }
 
     @Test
     public void testTwo(){
