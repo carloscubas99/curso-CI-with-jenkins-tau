@@ -25,21 +25,20 @@ public class OpenCartTests {
     //Test to launch browser with url
     @Test
     public void launchSite() {
-        System.out.println("Ejecutando launch site");
         driver.get(url);
         String title = driver.getTitle();
         //Your Store
         AssertJUnit.assertTrue(title.equals("Your Store"));
+
     }
 
     //Test to search for a product
     @Test
     public void searchForProduct() {
-        System.out.println("Ejectando search for product");
         driver.findElement(By.xpath(searchField)).sendKeys(query + Keys.ENTER);
 
         //sleep only when firefox as page loading takes some more time
-        if (browser.equalsIgnoreCase("firefox")) {
+        if(browser.equalsIgnoreCase("firefox")) {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -47,31 +46,38 @@ public class OpenCartTests {
                 e.printStackTrace();
             }
         }
+
         AssertJUnit.assertTrue(driver.findElement(By.xpath(result)).isDisplayed());
+
     }
 
 
     //Before test
     @BeforeTest
     public void beforeTest() {
+
         //Instantiate browser based on user input
-        if (browser != "" && browser != null) {
-            if (browser.equalsIgnoreCase("Chrome")) {
+
+        if(browser != "" && browser != null) {
+            if(browser.equalsIgnoreCase("Chrome")) {
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
                 driver.manage().window().maximize();
-            } else if (browser.equalsIgnoreCase("firefox")) {
+            }
+            else if(browser.equalsIgnoreCase("firefox")) {
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
                 driver.manage().window().maximize();
-            } else {
+            }
+            else {
                 System.out.println("Invalid option Selected hence defaulting to Chrome");
                 browser = "Chrome";
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
                 driver.manage().window().maximize();
             }
-        } else {
+        }
+        else {
             browser = "Chrome";
             driver = new ChromeDriver();
             driver.manage().window().maximize();

@@ -98,5 +98,5 @@ public class SauceDemoTests {
     public void afterTest() {
         driver.quit();
     }
-    
+
 }
