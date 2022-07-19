@@ -13,7 +13,8 @@ import org.testng.annotations.Test;
 
 public class OpenCartTest {
     //For demonstrating parameterized builds
-    String browser = "firefox";
+    String browser = System.getProperty("browser");
+
 
     private WebDriver driver;
     private String url = "http://opencart.abstracta.us/";
