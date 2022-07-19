@@ -8,7 +8,7 @@
         </classes>
     </test>
 
-    <test name="SaceDemoTest">
+    <test name="SauceDemoTest">
         <classes>
             <class name="training.suite2.SauceDemoTests"/>
         </classes>
