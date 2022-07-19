@@ -23,7 +23,7 @@ public class FirstSeleniumJavaTest {
 
     @Test
     public void testTwo(){
-        driver.get("https://www.google.co.uk/");
+        driver.get("https://www.google.com");
         driver.manage().window().maximize();
 
         String title1 = driver.getTitle();
