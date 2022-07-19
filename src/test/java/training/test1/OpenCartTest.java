@@ -15,7 +15,6 @@ public class OpenCartTest {
     //For demonstrating parameterized builds
     String browser = System.getProperty("browser");
 
-
     private WebDriver driver;
     private String url = "http://opencart.abstracta.us/";
     String searchField = "//*[@id='search']/input";
@@ -26,16 +25,17 @@ public class OpenCartTest {
     //Test to launch browser with url
     @Test
     public void launchSite() {
+        System.out.println("Ejecutando launch site");
         driver.get(url);
         String title = driver.getTitle();
         //Your Store
         AssertJUnit.assertTrue(title.equals("Your Store"));
-
     }
 
     //Test to search for a product
     @Test
     public void searchForProduct() {
+        System.out.println("Ejectando search for product");
         driver.findElement(By.xpath(searchField)).sendKeys(query + Keys.ENTER);
 
         //sleep only when firefox as page loading takes some more time
@@ -47,9 +47,7 @@ public class OpenCartTest {
                 e.printStackTrace();
             }
         }
-
         AssertJUnit.assertTrue(driver.findElement(By.xpath(result)).isDisplayed());
-
     }
 
 
@@ -57,7 +55,6 @@ public class OpenCartTest {
     @BeforeTest
     public void beforeTest() {
         //Instantiate browser based on user input
-
         if (browser != "" && browser != null) {
             if (browser.equalsIgnoreCase("Chrome")) {
                 WebDriverManager.chromedriver().setup();
