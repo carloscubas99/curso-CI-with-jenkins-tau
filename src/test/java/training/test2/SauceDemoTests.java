@@ -65,19 +65,22 @@ public class SauceDemoTests {
     //Before test
     @BeforeTest
     public void beforeTest() {
-        WebDriverManager.chromedriver().setup();
+
         //Instantiate browser based on user input
 
         if (browser != "" && browser != null) {
             if (browser.equalsIgnoreCase("Chrome")) {
+                WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
                 driver.manage().window().maximize();
             } else if (browser.equalsIgnoreCase("firefox")) {
+                WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
                 driver.manage().window().maximize();
             } else {
                 System.out.println("Invalid option Selected hence defaulting to Chrome");
                 browser = "Chrome";
+                WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
                 driver.manage().window().maximize();
             }
