@@ -1,75 +1,60 @@
-package suite2;
+package training.suite1;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class SauceDemoTests {
-    private WebDriver driver;
-    private String url = "https://www.saucedemo.com/";
-    private String header = "Swag Labs";
-
+public class OpenCartTests {
     //For demonstrating parameterized builds
     String browser = System.getProperty("browser");
 
+    private WebDriver driver;
+    private String url = "http://opencart.abstracta.us/";
+    String searchField = "//*[@id='search']/input";
+    String result = "//*[@id=\"content\"]/div[3]/div/div/div[1]/a/img";
+    String query = "Macbook Air";
 
-    public void waitForPageLoaded() {
-        ExpectedCondition<Boolean> expectation = new
-                ExpectedCondition<Boolean>() {
-                    public Boolean apply(WebDriver driver) {
-                        return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
-                    }
-                };
-        try {
-            Thread.sleep(1000);
-            WebDriverWait wait = new WebDriverWait(driver, 30);
-            wait.until(expectation);
-        } catch (Throwable error) {
-            Assert.fail("Timeout waiting for Page Load Request to complete.");
-        }
-    }
 
     //Test to launch browser with url
-    @Test(enabled = true, priority = 0)
-    public void open() {
-        System.out.println("ejecutando mystore");
+    @Test
+    public void launchSite() {
+        System.out.println("Ejecutando launch site");
         driver.get(url);
-        waitForPageLoaded();
         String title = driver.getTitle();
-        System.out.println(title);
-        //My Store
-        AssertJUnit.assertTrue(title.equals(header));
-
+        //Your Store
+        AssertJUnit.assertTrue(title.equals("Your Store"));
     }
 
-    //Login
+    //Test to search for a product
+    @Test
+    public void searchForProduct() {
+        System.out.println("Ejectando search for product");
+        driver.findElement(By.xpath(searchField)).sendKeys(query + Keys.ENTER);
 
-    @Test(enabled = true, priority = 1)
-    public void login() {
-        System.out.println("Ejecutando saucedemo");
-        driver.findElement(By.id("user-name")).sendKeys("standard_user");
-        driver.findElement(By.id("password")).sendKeys("secret_sauce");
-        driver.findElement(By.className("btn_action")).click();
-        AssertJUnit.assertTrue(driver.findElement(By.className("product_label")).getText()
-                .equals("Products"));
+        //sleep only when firefox as page loading takes some more time
+        if (browser.equalsIgnoreCase("firefox")) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        AssertJUnit.assertTrue(driver.findElement(By.xpath(result)).isDisplayed());
     }
+
 
     //Before test
     @BeforeTest
     public void beforeTest() {
-
         //Instantiate browser based on user input
-
         if (browser != "" && browser != null) {
             if (browser.equalsIgnoreCase("Chrome")) {
                 WebDriverManager.chromedriver().setup();
@@ -98,5 +83,5 @@ public class SauceDemoTests {
     public void afterTest() {
         driver.quit();
     }
-    
+
 }
