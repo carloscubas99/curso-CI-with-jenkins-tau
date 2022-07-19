@@ -1,4 +1,4 @@
-package suite1;
+package training.suite1;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
@@ -11,7 +11,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class OpenCartTests {
+public class OpenCartTest {
     //For demonstrating parameterized builds
     String browser = System.getProperty("browser");
 
