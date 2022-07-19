@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 public class OpenCartTest {
     //For demonstrating parameterized builds
-    String browser = System.getProperty("browser");
+    String browser = "firefox";
 
     private WebDriver driver;
     private String url = "http://opencart.abstracta.us/";
@@ -69,6 +69,7 @@ public class OpenCartTest {
             } else {
                 System.out.println("Invalid option Selected hence defaulting to Chrome");
                 browser = "Chrome";
+                WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
                 driver.manage().window().maximize();
             }
