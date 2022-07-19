@@ -1,4 +1,4 @@
-package training.test2;
+package suite2;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
