@@ -42,6 +42,7 @@ public class SauceDemoTests {
     //Test to launch browser with url
     @Test(enabled = true, priority = 0)
     public void open() {
+        System.out.println("444444");
         System.out.println("ejecutando mystore");
         driver.get(url);
         waitForPageLoaded();
@@ -49,13 +50,12 @@ public class SauceDemoTests {
         System.out.println(title);
         //My Store
         AssertJUnit.assertTrue(title.equals(header));
-
     }
 
     //Login
-
     @Test(enabled = true, priority = 1)
     public void login() {
+        System.out.println("333333");
         System.out.println("Ejecutando saucedemo");
         driver.findElement(By.id("user-name")).sendKeys("standard_user");
         driver.findElement(By.id("password")).sendKeys("secret_sauce");
@@ -67,9 +67,7 @@ public class SauceDemoTests {
     //Before test
     @BeforeTest
     public void beforeTest() {
-
         //Instantiate browser based on user input
-
         if (browser != "" && browser != null) {
             if (browser.equalsIgnoreCase("Chrome")) {
                 WebDriverManager.chromedriver().setup();

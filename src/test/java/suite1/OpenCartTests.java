@@ -25,16 +25,17 @@ public class OpenCartTests {
     //Test to launch browser with url
     @Test
     public void launchSite() {
+        System.out.println("1111111");
         driver.get(url);
         String title = driver.getTitle();
         //Your Store
         AssertJUnit.assertTrue(title.equals("Your Store"));
-
     }
 
     //Test to search for a product
     @Test
     public void searchForProduct() {
+        System.out.println("22222222");
         driver.findElement(By.xpath(searchField)).sendKeys(query + Keys.ENTER);
 
         //sleep only when firefox as page loading takes some more time
@@ -46,18 +47,12 @@ public class OpenCartTests {
                 e.printStackTrace();
             }
         }
-
         AssertJUnit.assertTrue(driver.findElement(By.xpath(result)).isDisplayed());
-
     }
 
-
-    //Before test
     @BeforeTest
     public void beforeTest() {
-
         //Instantiate browser based on user input
-
         if(browser != "" && browser != null) {
             if(browser.equalsIgnoreCase("Chrome")) {
                 WebDriverManager.chromedriver().setup();
@@ -84,7 +79,6 @@ public class OpenCartTests {
         }
     }
 
-    //hooks - to tear down after test is executed
     @AfterTest
     public void afterTest() {
         driver.quit();
