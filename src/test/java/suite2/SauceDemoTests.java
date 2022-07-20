@@ -57,11 +57,15 @@ public class SauceDemoTests {
     public void login() {
         System.out.println("333333");
         System.out.println("Ejecutando saucedemo");
-        driver.findElement(By.id("user-name")).sendKeys("standard_user");
-        driver.findElement(By.id("password")).sendKeys("secret_sauce");
-        driver.findElement(By.className("btn_action")).click();
-        AssertJUnit.assertTrue(driver.findElement(By.className("product_label")).getText()
-                .equals("Products"));
+        driver.get(url);
+        waitForPageLoaded();
+        String title = driver.getTitle();
+        System.out.println(title);
+//        driver.findElement(By.id("user-name")).sendKeys("standard_user");
+//        driver.findElement(By.id("password")).sendKeys("secret_sauce");
+//        driver.findElement(By.className("btn_action")).click();
+//        AssertJUnit.assertTrue(driver.findElement(By.className("product_label")).getText()
+//                .equals("Products"));
     }
 
     //Before test

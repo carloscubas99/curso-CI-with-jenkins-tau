@@ -36,18 +36,20 @@ public class OpenCartTests {
     @Test
     public void searchForProduct() {
         System.out.println("22222222");
-        driver.findElement(By.xpath(searchField)).sendKeys(query + Keys.ENTER);
-
-        //sleep only when firefox as page loading takes some more time
-        if(browser.equalsIgnoreCase("firefox")) {
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
-        AssertJUnit.assertTrue(driver.findElement(By.xpath(result)).isDisplayed());
+        driver.get(url);
+        String title = driver.getTitle();
+//        driver.findElement(By.xpath(searchField)).sendKeys(query + Keys.ENTER);
+//
+//        //sleep only when firefox as page loading takes some more time
+//        if(browser.equalsIgnoreCase("firefox")) {
+//            try {
+//                Thread.sleep(1000);
+//            } catch (InterruptedException e) {
+//                // TODO Auto-generated catch block
+//                e.printStackTrace();
+//            }
+//        }
+//        AssertJUnit.assertTrue(driver.findElement(By.xpath(result)).isDisplayed());
     }
 
     @BeforeTest
